@@ -14,4 +14,11 @@ String, Number, Boolean, null, undefined, Symbol, BigInt
 Reference Type (Non Primitive)
 Array, Object, Functions
 
+
+
++++++++++++++++++++++++++
+
+Stack(Primitive) (give copy of data)
+Heap(Non-Primitive) (give reference of data)
+
 */
