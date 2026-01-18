@@ -1,6 +1,51 @@
-{
-	"image": "mcr.microsoft.com/devcontainers/universal:2",
-	"features": {
-		"ghcr.io/stu-bell/devcontainer-features/node:0": {}
-	}
+import java.util.*;
+
+public class Solution {
+    public int maximumCapacity(int[] costs, int[] capacity, int budget) {
+        int n = costs.length;
+        int maxTotalCapacity = 0;
+
+        // 1. Check for single machine maximum
+        for (int i = 0; i < n; i++) {
+            if (costs[i] < budget) {
+                maxTotalCapacity = Math.max(maxTotalCapacity, capacity[i]);
+            }
+        }
+
+        // 2. Pair costs and capacities and sort by cost
+        int[][] machines = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            machines[i][0] = costs[i];
+            machines[i][1] = capacity[i];
+        }
+        Arrays.sort(machines, (a, b) -> Integer.compare(a[0], b[0]));
+
+        // 3. Create prefix max capacity array
+        int[] prefixMaxCap = new int[n];
+        prefixMaxCap[0] = machines[0][1];
+        for (int i = 1; i < n; i++) {
+            prefixMaxCap[i] = Math.max(prefixMaxCap[i - 1], machines[i][1]);
+        }
+
+        // 4. Two-pointer approach for pairs
+        int right = n - 1;
+        for (int left = 0; left < n; left++) {
+            // We need costs[left] + costs[right] < budget
+            // and the machines must be distinct (left != right)
+            while (right >= 0 && machines[left][0] + machines[right][0] >= budget) {
+                right--;
+            }
+
+            if (right > left) {
+                // Best pair for current 'left' machine is the best machine 
+                // within the range [0, right] that isn't the 'left' machine itself.
+                // Since prefixMaxCap[right] includes 'left', and we want the absolute max:
+                maxTotalCapacity = Math.max(maxTotalCapacity, machines[left][1] + prefixMaxCap[right]);
+            } else if (right >= 0 && right != left) {
+                 maxTotalCapacity = Math.max(maxTotalCapacity, machines[left][1] + prefixMaxCap[right]);
+            }
+        }
+
+        return maxTotalCapacity;
+    }
 }
