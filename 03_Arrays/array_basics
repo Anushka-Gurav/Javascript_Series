@@ -1,0 +1,21 @@
+//Array
+
+const myArr = [0,1,2,3,4,5,]
+console.log(myArr[0])
+console.log(myArr.length)
+
+
+//Array Methods
+
+myArr.push(6) //insert at end
+myArr.pop() //remove last element
+console.log(myArr)
+myArr.unshift(9) //insert element at start
+myArr.shift() //remove first element
+
+min=[3,4,5]
+newArr=[1,2,min]
+spread=[...newArr,...min]
+console.log(spread)
+
+console.log(newArr.flat(Infinity))
