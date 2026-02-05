@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: white;">
+    <h2>Amazing Images</h2>
+    <ul id="images">
+            <li><img width="200px" id="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqczS9aXJzsx7wNhojqXHRZWjafiggnPW8A&s"></li>
+            <li><img width="200px" id="img2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqczS9aXJzsx7wNhojqXHRZWjafiggnPW8A&s"></li>
+              <li><img width="200px" id="img3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqczS9aXJzsx7wNhojqXHRZWjafiggnPW8A&s"></li>
+              <li><img width="200px" id="img4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqczS9aXJzsx7wNhojqXHRZWjafiggnPW8A&s"></li>
+              <li><img width="200px" id="img5" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCqczS9aXJzsx7wNhojqXHRZWjafiggnPW8A&s"></li>
+              <li><a style="color:aliceblue;" href="http://google.com" id="google">Google</a></li>
+                
+        </ul>
+</body>
+<script>
+    // document.getElementById("img3").onclick = function() {
+    //     alert("owl clicked")
+    // }
+
+
+    
+    //type, timestamp, defaultPrevented 
+    //target, toElement, srcElement, currentTarget
+    //clientX, clientY, screenX, screenY
+    //altkey, ctrlkey, shifykey, keyCode
+
+    document.getElementById("img3").addEventListener("click", function(e){
+
+        console.log(e)
+        alert("Owl clicked!")
+    },true);
+
+    document.getElementById("")
+    document.getElementById("google").addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopPropogation();
+        alert("Google clicked!")
+    });
+
+    document.querySelector("#images").addEventListener("click", function(e){
+            console.log(e.target);
+            let remove = e.target.parentNode;
+            remove.remove();
+    });
+
+</script>
+</html>

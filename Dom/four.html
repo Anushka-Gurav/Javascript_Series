@@ -50,7 +50,13 @@
 
     //remove
 
-    const lastLang = document.querySelector('li:last-child')
+    const lastLang = document.querySelector('.language li:last-child')
     lastLang.remove()
+
+
+    const newEele = document.querySelector('.language')
+    const newList = document.createElement('li')
+    newList.innerHTML = "GoLang"
+    newEele.appendChild(newList)
       </script>
 </html>
